@@ -7,24 +7,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tech.ITM.spring.boot_security.model.Role;
 import tech.ITM.spring.boot_security.model.User;
-import tech.ITM.spring.boot_security.repository.UserRepository;
 import tech.ITM.spring.boot_security.service.UserService;
 
 import java.util.Set;
 
 @Controller
-@RequestMapping("admin")
 public class AdminController {
     private final UserService userService;
-    private final UserRepository userRepository;
 
-    public AdminController(UserService userService, UserRepository userRepository) {
+    public AdminController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
-    @GetMapping
+    @RequestMapping("/")
+    public String getLoginPage() {
+        return "login";
+    }
 
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/admin")
     public String showAllUsers(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();

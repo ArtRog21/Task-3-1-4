@@ -11,7 +11,7 @@ import java.util.Set;
 public interface UserService {
     List<User> allUsers();
     User showUser(Long id);
-    User getUserByName(String username);
+    User getUserByEmail(String email);
     void addUser(User user);
     void updateUser(User user, Long id);
     void deleteUser(Long id);

@@ -37,7 +37,7 @@ public class AppController {
     @GetMapping(value ="/infoUser")
     @ResponseBody
     public User infoUser(@AuthenticationPrincipal User user_authentication){
-        User user = userService.getUserByName(user_authentication.getEmail());
+        User user = userService.getUserByEmail(user_authentication.getEmail());
         return user;
     }
 
